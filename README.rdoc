@@ -1,0 +1,36 @@
+= Sale Items Log Parser
+
+The <tt>data/</tt> directory contains a log file of sale item views and a data file of users selected sizes.
+
+The <tt>data/users.csv</tt> contains a the size list for each user.  For example, user with id 4 has sizes "m" and "l" as indicated by the record:
+
+ 4,m,l
+
+The <tt>data/sale_items.log</tt> file contains records in the following format:
+
+ U 99 Theory s|l|xl $60 (35%)
+
+The U indicates that this records corresponds to user with id 99.  The item was available in sizes "s", "l" and "xl".  The item's original price was $60 and the discount was 35%.  A record may indicate the available sizes with <tt>-all-</tt>:
+
+ U 74 Theory -all- $98 (45%)
+
+in which cases the item was available in exactly the user's sizes.
+
+Running <tt>ruby report.rb</tt> should output a report with the following format:
+
+ Sale Items Report
+ ============================
+ Total Items:        345
+ Average Sale Price: $26.57
+ Total Sale Price:   $5061
+ 
+ Five most common sizes:
+ M   (33%) 
+ S   (22%)
+ L   (17%)
+ XL  (16%)
+ XXL (12%)
+
+ Five most common brands:
+ Juicy Couture  (4%)
+ Theory         (3%)
