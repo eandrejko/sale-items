@@ -16,6 +16,10 @@ The U indicates that this records corresponds to user with id 99.  The item was 
 
 in which cases the item was available in exactly the user's sizes.
 
+A log entry starting with <tt>U</tt> indicates that the item was viewed by a guest and not a logged in user, in which case there is no user id in the log entry.
+
+ G DKNY xs|s|l|xxl $42 (25%)
+
 Running <tt>ruby report.rb</tt> should output a report with the following format:
 
  Sale Items Report
@@ -34,3 +38,5 @@ Running <tt>ruby report.rb</tt> should output a report with the following format
  Five most common brands:
  Juicy Couture  (4%)
  Theory         (3%)
+
+The percentages for the most common sizes should count the number of item views (rows in the log file) for an item available in that size as a percentage of the total number of item views in the log file.  The percentages for the most common brands should count the number of item views (rows in the log file) for an item of that brand as a percentage of the total number of item vies in the log file.
